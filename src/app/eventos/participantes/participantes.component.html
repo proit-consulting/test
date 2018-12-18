@@ -1,0 +1,55 @@
+<!-- Teamid="team" -->
+<div class="portal-example-page">
+    <div class="portal-example-pager__header" fxLayout="row" fxLayoutAlign="center center">
+        <div class="portal-example-pager__header-content">
+
+            <h3 class="section-title "  style="color: #64add6">Participante <i class="icon-plus-circle2 pull-right add" title="Convidar Participante!" style="padding: 15px 20px; font-size: 20px; border: 0" data-toggle="modal" data-target="#ModalLong"></i></h3>
+
+            <div class="row" *ngIf=" participantesObservable  | async as paticipantesList; else loading ">
+                <!-- Team member -->
+                <ng-container *ngIf=" paticipantesList.length; else noItems">
+                    <div class="col s4 m3 l3" *ngFor=" let partic of paticipantesList">
+
+                        <div class="frontside">
+                            <mat-card>
+                                <mat-card-content>
+                                    <p><img class=" img-fluid" src="assets/img/iconPerfil.png" alt="card image"></p>
+
+                                    <!--<p *ngIf="paciente.foto!=null"><img class=" img-fluid" src="{{paciente.foto}}" alt="card image"></p>-->
+                                    <h4 class="card-title">{{partic.nomeparticipante}}</h4>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+
+                    </div>
+                </ng-container>    
+                <!-- ./Team member -->
+                <!-- Team member -->
+                <ng-template #noItems>Nenhum participante encontrado!</ng-template>
+
+            </div>
+            <ng-template #loading><i class="fa fa-spinner fa-spin" style="font-size:60px"></i></ng-template>
+        </div>
+    </div>
+</div>
+
+<!-- Team -->
+
+<!-- Modal -->
+<div class="modal fade" id="ModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLongTitle">Criar novo participante</h6>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <app-email></app-email>
+            </div>
+
+        </div>
+    </div>
+</div>

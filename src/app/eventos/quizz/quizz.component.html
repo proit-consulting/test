@@ -1,0 +1,124 @@
+ <section  class="pb-5">   
+    <div class="container">
+        <h3 class="section-title" style="text-align: center; color: #64add6"> Quizz do evento <i class="icon-plus-circle2 pull-right add" title="Adicionar pergunta" style="padding: 15px 20px; font-size: 20px; border: 0" data-toggle="modal" data-target="#myModal"></i> </h3>
+        <div class="row mt-5" *ngIf=" questoesObservable  | async as perguntasList ; else loading ">
+            <ng-container *ngIf=" perguntasList.length; else noItems">
+                <div class="col-md-4 mb-4" *ngFor=" let pergunta of perguntasList | paginate: { itemsPerPage: 3, currentPage: p };">
+
+                     <mat-card class="example-card">
+                        <mat-card-header>
+                            <mat-card-title>{{pergunta.pergunta}}</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <mat-list>
+                                 <mat-list-item *ngIf="pergunta.resposta1">{{ pergunta.resposta1}}</mat-list-item>
+                                 <mat-list-item *ngIf="pergunta.resposta2">{{ pergunta.resposta2}} </mat-list-item>
+                                 <mat-list-item *ngIf="pergunta.resposta3">{{ pergunta.resposta3}}</mat-list-item>
+                            </mat-list>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button type="button" mat-raised-button color="primary" data-toggle="modal" data-target="#exampleModalLong" (click)="infoPergunt(pergunta.uidpergunta)">Estatisticas</button>
+                        </mat-card-actions>
+                    </mat-card><!--
+                    <div class="card" style="height: 260px;">
+                        <h5 class="card-title text-center">{{pergunta.pergunta}}</h5>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngIf="pergunta.resposta1">
+                                    {{ pergunta.resposta1}}
+                                </li>
+                                <li class="list-group-item" *ngIf="pergunta.resposta2">
+                                    {{ pergunta.resposta2}}
+                                </li>
+                                <li class="list-group-item" *ngIf="pergunta.resposta3">
+                                    {{ pergunta.resposta3}}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong" (click)="infoPergunt(pergunta.uidpergunta)">Estatisticas</button>
+                    </div> -->
+                </div>
+            </ng-container>
+           
+            <ng-template #noItems>Nenhuma pergunta encontrada!</ng-template>
+        </div>
+        <div class="row" *ngIf=" (questoesObservable  | async)?.length">
+                     <div class="col text-center">
+                        <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
+
+                    </div>
+        </div>
+    <ng-template #loading><i class="fa fa-spinner fa-spin" style="font-size:60px"></i></ng-template>
+    </div>
+</section>
+<!-- Modal NOVA pergunta-->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:#074a7e;">Adicionar pergunta </h5>
+
+                <span id="closebtn" aria-hidden="true" class="close  icon-cancel-circle2" data-dismiss="modal" aria-label="Close"></span>
+
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="addPergunta()" #f="ngForm">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="nome" id="pergunta" [(ngModel)]="quizz.pergunta" #pergunta="ngModel" placeholder="pergunta...">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="nome" id="nome" [(ngModel)]="quizz.resposta1" #opcao1="ngModel" placeholder="Opção1...">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="nome" id="nome" [(ngModel)]="quizz.resposta2" #opcao2="ngModel" placeholder="Opção2..">
+                        </div>
+
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn" [disabled]="!f.form.valid">Adicionar</button>
+                    </div>
+
+                    <!-- <button type="submit" class="btn btn-primary  btn-block"  [disabled]="!f.form.valid">Entrar</button> -->
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal Estatistica-->
+
+
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Estatistica</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+
+                <canvas id="pie-chart" width="800" height="450"></canvas>
+
+            </div>
+        </div>
+    </div>
+</div>

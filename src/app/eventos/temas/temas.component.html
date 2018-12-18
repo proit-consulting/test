@@ -1,0 +1,124 @@
+<div class="col-md-12" style="padding-top: 100px; ">
+
+    <div class="card tabela table-hover" >
+   
+        <div class="table-responsive-sm" >
+            <h3 style="text-align: center; color: #64add6"> Lista dos Temas <i class="icon-plus-circle2 pull-right add" title="Criar tema" style="padding: 15px 20px; font-size: 20px; border: 0" data-toggle="modal" data-target="#myModal"></i> </h3>
+            <!--*ngIf=" temas.length; else noItems"<h2 style="text-align: center;"> Todas as Especialidades <i class="icon-plus-circle2 pull-right add" title="Criar novo evento!" (click)="addrow()" style="padding: 5px 20px; font-size: 20px;"></i> </h2>-->
+           
+
+            <!--<h2>Eventos <i class="icon-plus-circle2 pull-right add" title="Criar novo evento!" (click)="addrow()" style="padding: 5px 20px; font-size: 20px;"></i></h2>-->
+            <table class="table table-bordered" style="border: 1px solid cyan(255,255,255,0.3);" >
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name do Tema</th>
+                        <th>Name do Palestrante</th>
+                        <th>Opções</th>
+
+                    </tr>
+
+                </thead>
+                <tbody *ngFor=" let item of temas  | paginate: { itemsPerPage: 7, currentPage: p };let i=index ">
+                    <tr  id="myTable">
+
+                        <!--class="tr_clone"<td><input contenteditable="true" type="text" id="nomeEvent" style="border: none;background-color: transparent;width: 100%;padding: .75rem;" value="{{item.nome}}"></td>-->
+                        <td id="nomeEvent" align="center">{{i+1}}</td>
+                        <td id="nomeEvent"><a>{{item.nometema}}</a></td>
+                        <td id="nomeEvent"><a>{{item.nomepalestrante}}</a></td>
+                        <td align="center">
+                            <i class=" icon-info22" style=" color:#64add6;font-size: 16px; padding-right: 30px;padding: .75rem; " title="Adicionar palestrante" (click)="gettema(item.uidtema,item)" data-toggle="modal" data-target="#myModalPalest"></i>
+
+                            <i class="   icon-bin2 delete1" style=" font-size: 16px;color:red ; padding-left: 30px;padding: .75rem;" title="Eliminar tema!" (click)="delEspec(item.id)"></i>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
+
+            </div>
+        </div>
+       
+    </div> 
+    <ng-template #noItems>Este evento ainda tem temas! Adicione.</ng-template>
+</div>
+
+
+<!-- Modal NOVO TEMA-->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:#074a7e;">Adicionar Novo Tema </h5>
+
+                <span id="closebtn" aria-hidden="true" class="close  icon-cancel-circle2" data-dismiss="modal" aria-label="Close"></span>
+
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="nome" id="nome" [(ngModel)]="nome" #name="ngModel" placeholder="Tema...">
+                        </div>
+
+                    </div>
+                    <!-- <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="descricao" id="descricao" [(ngModel)]="descricao" #desc="ngModel" placeholder="Seu Email...">
+                        </div>
+
+                    </div>-->
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn" [disabled]="!f.form.valid">Criar</button>
+                    </div>
+
+                    <!-- <button type="submit" class="btn btn-primary  btn-block"  [disabled]="!f.form.valid">Entrar</button> -->
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal ADD PALESTRANTE-->
+
+<div class="modal fade" id="myModalPalest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:#074a7e;">Adicionar Palestrante </h5>
+
+                <span id="closebtn" aria-hidden="true" class="close  icon-cancel-circle2" data-dismiss="modal" aria-label="Close"></span>
+
+            </div>
+            <div class="modal-body">
+                <div>
+
+                    <select style=" border-bottom: 1px solid #074a7e;outline: none;border: 0px 0px 1px 0px;" [(ngModel)]="palestUid" (ngModelChange)="show($event)">
+                         <option value="0" disabled>Palestrantes</option>
+                         <option *ngFor="let palestrante of palestrantes" [ngValue]="palestrante">
+                        {{palestrante.nomepalestrante}}
+                         </option>
+                    </select>
+
+                    <!--<a style=" border-bottom: 1px solid #074a7e;"> {{palestNome}}</a>-->
+
+                    <!--<input id="textbox" type="text" />-->
+
+                    <button id="addpalest" type="button" class="btn btn-success btn-sm" (click)=" AddPalest()">Adicionar</button>
+                    <button type="button" class="btn btn-danger btn-sm">Cancelar</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

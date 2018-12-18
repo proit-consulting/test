@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="col-md-8 offset-md-2" ><!-- *ngFor="let infoevento of evento" -->
+        <form (ngSubmit)="Editar()" #editar="ngForm">
+            <div class="form-group row">
+                <div class="col mb-2">
+
+                    <img class=" img-fluid" src="{{Evento.banner}}" alt="card image"  height="142">
+
+                </div >
+            </div>
+            <div class="form-group row">
+                <div class="col">
+                    <label>Nome do Evento</label>
+                    <input type="text" [(ngModel)]="Evento.nomeevento" name="nome" class="form-control" >
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <div class="col">
+                    <label>Data do Evento</label>
+                    <input type="date" [(ngModel)]="Evento.data" name="data" class="form-control" >
+                </div>
+                <div class="col">
+                    <label>Hora do Evento</label>
+                    <input type="time" class="form-control" [(ngModel)]="Evento.hora" name="hora">
+                </div>
+            </div>
+            <!-- <div class="form-group row">
+
+                        <div class="col">
+                            <input type="file" name="pic" accept="image/*">
+
+                            <br>
+                            <br>
+                        </div>
+                        <div class="col">
+                            <label>Background </label>
+
+                            <input type="color" value="{{Evento.eventoColor}}">
+                        </div>
+                
+            </div> -->
+            <div class="text-center" style="padding-top: 20px">
+                <button class="btn btn-primary" type="submit">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+ <div class="backside">
+                            <div class="card">
+                                <div class="card-body ">
+                                    <h4 class="card-title text-center">{{paciente.nome}}</h4>
+                                    <p class="card-text">B.I: {{paciente.bi}}</p>
+                                    <p class="card-text">Data de Nacimento: {{paciente.dataNascimento}}</p>
+                                    <p class="card-text">Sexo: {{paciente.sexo}}</p>
+                                    <p class="card-text">Endereço: {{paciente.endereco}}</p>
+                                    <p class="card-text">Telefone: {{paciente.telefone}}</p>
+                                    <p class="card-text">Email: {{paciente.email}}</p>
+                                    <ul class="list-inline">
+                                        <!--  <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>-->
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" [routerLink]="['/paciente-marcacao',paciente.key]">
+                                                <i class=" icon-file-text3"> Consultas</i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        

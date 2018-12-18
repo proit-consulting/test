@@ -1,0 +1,23 @@
+.portal-dashboard-page-wrapper {
+  padding: 16px;
+  min-height: 100%;
+}
+
+// Widgets
+.portal-widget {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.portal-widget__content {
+  flex: 1 1 100%;
+}
+
+// IE 11 fixes
+@media all and (-ms-high-contrast:none) {
+  .portal-widget {
+    display: block;
+    padding-bottom: 36px;
+  }
+}

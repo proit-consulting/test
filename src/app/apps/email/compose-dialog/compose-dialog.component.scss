@@ -1,0 +1,9 @@
+// IE 11 fixes
+@media all and (-ms-high-contrast:none) {
+  .email-compose-form {
+    display: block !important;
+    > * {
+      width: 100%;
+    }
+  }
+}

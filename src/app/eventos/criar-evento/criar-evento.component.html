@@ -1,0 +1,92 @@
+<p style="margin-bottom: 25px;">Conte-nos sobre o seu evento, para que possamos configurá-lo corretamente </p>
+<form class="was-validated" (ngSubmit)="criarEvento()" #cadastro="ngForm">
+    <div class="form-group">
+        <!--<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>-->
+            <input type="email" class="form-control form-control-sm" id="nome" name="nome" placeholder="Nome do Evento" [(ngModel)]="evento.nomeevento" #nome1="ngModel" required>
+            <div class="invalid-feedback" *ngIf="!nome1.valid && (nome1.dirty || nome1.touched)" style="margin-top: 5px;">
+            <span class="help-block">*Campo obrigatório.</span>
+          </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="data">Data do evento</label>
+            <input type="date" class="form-control form-control-sm" id="data" placeholder="Data do Evento" name="data" [(ngModel)]="evento.data" #data1="ngModel" required>
+            <div class="invalid-feedback" *ngIf="!data1.valid && (data1.dirty || data1.touched)" style="margin-top: 5px;">
+                <span class="help-block">*Campo obrigatório.</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+              <label for="favcolor">Escolha a color:</label>
+              <input class="form-control form-control-sm" [(ngModel)]="color"  (ngModelChange)="cor($event)" type="color" name="favcolor" value="#ff0000" #color1="ngModel">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label for="favcolor">Local</label>
+            <div class="input-container">
+              <input appGooglePlaces
+                type="text"
+                class="google-place-input" (onSelect)="setAddress($event)"
+                placeholder="Type to search..">
+            </div>
+            <ul style="list-style-type: none;">
+              <li *ngFor="let key of addrKeys">
+                <span style="font-weight: bold">{{key}}</span>: <span>{{addr[key]}}</span>
+              </li>
+            </ul>
+              
+        </div>
+        <div class="col-sm-6">
+             <label for="foto">Escolha uma imagem (Banner)</label>
+             <input class="form-control " type="file" name="foto" id="foto" (change)="detectFiles($event)" accept=".png,.jpg" >
+        </div>
+     
+    </div>
+    <!--<div class="form-group">
+        <label for="tema">Imagem predifinida</label>
+        <div class="col-sm-10 offset-sm-1">
+            
+            <input type="image" name="submit_Azul" alt="Tema Azul" src="assets/img/moldeAzul.jpg" style="width: 100px" value="Azul" (click)="escolhaTema($event.target.value)">
+            <input type="image" name="submit_cinza" alt="Tema Cinza" src="assets/img/moldeCinza.jpg" style="width: 100px" value="Cinza" (click)="escolhaTema($event.target.value)">
+            <input type="image" name="submit_verde" alt="Tema Verde" src="assets/img/moldeVerde.jpg" style="width: 100px" value="Verde" (click)="escolhaTema($event.target.value)">
+        </div>
+    </div>-->
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!cadastro.form.valid">Salvar</button>
+    </div>
+</form>
+
+<!--<div class="progress">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+    File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
+</div>-->
+
+<!--<button type="button" class="btn btn-secondary" data-dismiss="modal" routerLink="/listarEventos">Cancelar</button>
+<button type="button" class="btn btn-primary" (click)="addEsp()">Salvar</button>
+-->
+<!--<div class="teste" [ngStyle]="{'border':border}">
+    <p>jjjjjjjjjjjjjjjjjjjjjjjjj</p>
+    <p>jjjjjjjjjjjjjjjjjjjjjjjjj</p>
+    <p>jjjjjjjjjjjjjjjjjjjjjjjjj</p>
+    <p>jjjjjjjjjjjjjjjjjjjjjjjjj</p>
+ </div>
+ <section *ngIf="evento.banner" style="height:300px;width:300px;" [ngStyle]="{'background': 'url(' + evento.banner + ') no-repeat 0 0 / cover'}" class="slider flex-center">
+</section>
+<img *ngIf="teste" [src]="teste" style="height:300px;width:300px;" alt="456">-->
+
+   <!--<div class="input-container">
+  <input 
+    type="text"
+    class="google-place-input"
+    appGooglePlaces
+    (onSelect)="setAddress($event)"
+    placeholder="Type to search..">
+    Displaying the contents of the address object received from our event emitter 
+    <ul style="list-style-type: none;">
+      <li *ngFor="let key of addrKeys">
+        <span style="font-weight: bold">{{key}}</span>: <span>{{addr[key]}}</span>
+      </li>
+    </ul>
+</div>-->

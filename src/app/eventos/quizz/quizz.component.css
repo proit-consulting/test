@@ -1,0 +1,15 @@
+.example-card{
+	height: 260px;
+}
+
+section {
+    padding: 60px 0;
+}
+
+section .section-title {
+    text-align: left;
+    color: #807e7e;
+    margin-bottom: 50px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+}

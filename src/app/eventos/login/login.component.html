@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1" style="margin-top: 100px;">
+        <h1></h1>
+            <div class="text-center" style="padding-bottom: 18px"><img src="assets/img/logotipoPincipal.png"></div>
+
+
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" type="email" name="email" id="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required [(ngModel)]="email" #name="ngModel" placeholder="Seu Email...">
+                    </div>
+                    <div class="alert alert-danger" *ngIf="!name.valid && (name.dirty || name.touched)" style="margin-top: 5px;">
+                      <span class="help-block" *ngIf="name.errors.required">*Campo obrigatório.</span>
+                        <span class="help-block" *ngIf="name.errors.pattern"> Email inválido</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" type="password" name="password" id="password" minlength="6" required [(ngModel)]="password" #password1="ngModel" placeholder="Sua Senha..." autocomplete="off">
+                    </div>
+                    <!-- <div class="alert alert-danger error" *ngIf="!password1.valid && ( password1.dirty || password1.touched)" style="margin-top: 5px;">*Campo obrigatório. Mínimo 6 caracteres</div> -->
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="!f.form.valid">Entrar</button>
+                </div>
+
+            </form>
+            <p style="margin-top: 10px;"> Não tem uma conta? <a routerLink="/signup" >Registre-se</a></p>
+    </div>
+</div>

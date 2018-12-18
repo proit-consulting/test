@@ -1,0 +1,43 @@
+/*table {
+    width: 100%;
+    border: 8px solid transparent;
+    //border-image: url(images/border.png) 30 stretch;
+}
+
+th {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+    font-weight: 1000;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}*/
+
+.edit {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.delete {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.table-content h3 {
+    text-align: center;
+}

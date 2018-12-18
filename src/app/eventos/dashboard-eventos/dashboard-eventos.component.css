@@ -1,0 +1,75 @@
+div .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*
+.sidenav-container {
+  height: 100%;
+
+}
+.sidenav {
+  width: 200px;
+  background-color: #c1c1c1;
+  top: 56px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}*/
+.sidenav {
+ /* width: 200px;
+  position: absolute;
+  z-index: -1;*/
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    /*z-index: -1;
+    background-color: #c1c1c1;*/
+    overflow-x: hidden;
+    padding-top: 80px;
+    /*border-right: 4px solid #0c4472;*/
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    /*font-family: "Times New Roman", Times, serif;*/
+    font-weight: bold;
+    font-size: 16px;
+    /*color: #0c4472;*/
+    color:white;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+    font-size: 22px;
+}
+
+.main {
+    margin-left: 160px;
+    /* Same as the width of the sidenav */
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.evento h5 {
+    margin-top: 40px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #0c4472;
+}

@@ -1,0 +1,65 @@
+
+   <!--<div class="sidenav">
+
+    <a routerLink="/listarEventos">Home</a>
+    <a [routerLink]="['./temas']">Temas</a>
+    <a [routerLink]="['./palestrantes']">Palestrantes</a>
+    <a [routerLink]="['./participantes']">Participantes</a>
+    <a [routerLink]="['./quizz']">Quizz</a>
+    <a [routerLink]="['./editarEvento']">Editar evento</a>
+  <a [routerLink]="['./email']">email</a> 
+
+</div>
+<app-header>
+</app-header>-->
+<nav class="nav justify-content-center grey lighten-4 py-4 font-weight-bold">
+    <a class="nav-link" routerLink="/eventos/listarEventos" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+    <a class="nav-link" [routerLink]="['./temas']" >Temas</a>
+    <a class="nav-link" [routerLink]="['./palestrantes']">Palestrantes</a>
+    <a class="nav-link" [routerLink]="['./participantes']">Participantes</a>
+    <a class="nav-link" [routerLink]="['./quizz']">Quizz</a>
+    <a class="nav-link" [routerLink]="['./editarEvento']">Editar evento</a>
+</nav>
+
+
+<div class="row">
+    <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1">
+        <div class="evento" *ngFor=" let item of nomeevento">
+            <h3 class="py-2">Evento<i class=" icon-arrow-right32" style="font-size: 30px"></i>{{item.nomeevento}}</h3>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+ <!--<mat-sidenav-container class="sidenav-container" fullscreen >
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu1</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/listarEventos" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+        <a mat-list-item [routerLink]="['./temas']">Temas</a>
+        <a mat-list-item [routerLink]="['./palestrantes']">Palestrantes</a>
+        <a mat-list-item [routerLink]="['./participantes']">Participantes</a>
+        <a mat-list-item [routerLink]="['./quizz']">Quizz</a>
+        <a mat-list-item [routerLink]="['./editarEvento']">Editar evento</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header>
+    </app-header>
+   
+        <div class=" col-md-10 ">
+            <div class="evento" *ngFor=" let item of nomeevento">
+                <h5>Evento<i class=" icon-arrow-right32" style="font-size: 30px"></i>{{item.nomeevento}}</h5>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>-->
+

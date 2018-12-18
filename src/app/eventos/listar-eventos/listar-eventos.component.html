@@ -1,0 +1,94 @@
+<!-- <app-header></app-header> -->
+
+<div class="col-md-12 " style="padding-top: 100px; ">
+    <div class="card tabela table-hover">
+
+        <div class="table-responsive-sm ">
+            <!--<h2 style="text-align: center;"> Todas as Especialidades <i class="icon-plus-circle2 pull-right add" title="Criar novo evento!" (click)="addrow()" style="padding: 5px 20px; font-size: 20px;"></i> </h2>-->
+            <h3 style="text-align: center; color: #64add6" i18n> Lista de Eventos <i class="icon-plus-circle2 pull-right add" title="Criar especialidade!" style="padding: 15px 20px; font-size: 20px; border: 0" data-toggle="modal" data-target="#myModal"></i> </h3>
+
+
+            <!--<h2>Eventos <i class="icon-plus-circle2 pull-right add" title="Criar novo evento!" (click)="addrow()" style="padding: 5px 20px; font-size: 20px;"></i></h2> table-sm-->
+            <table class="table table-bordered" style="border: 1px solid cyan(255,255,255,0.3);">
+                <thead>
+                    <tr>
+                        <th >#</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Palestrantes</th>
+                        <th>Participantes</th>
+                        <th>Tema</th>
+                        <th>Estado</th>
+
+                    </tr>
+                </thead>
+                <tbody *ngFor=" let item of eventos1  | paginate: { itemsPerPage: 7, currentPage: p };let i=index ">
+                    <tr  id="myTable">
+
+                        <!--class="tr_clone"<td><input contenteditable="true" type="text" id="nomeEvent" style="border: none;background-color: transparent;width: 100%;padding: .75rem;" value="{{item.nome}}"></td>-->
+                        <td id="nomeEvent">{{i+1}}</td>
+                        <td id="nomeEvent"><a [routerLink]="['/eventos/HomeEventos',item.id]" >{{item.nomeevento}}</a></td>
+                        <td id="dataEvent">{{item.data | date: 'dd/MM/yyyy'}}</td>
+
+
+                        <td id="dataEvent">{{item.palestrantes}}</td>
+                        <td id="dataEvent">{{item.participantes}}</td>
+                        <td id="dataEvent">{{item.temas}}</td>
+                        <td id="dataEvent">{{tempo(item.data)}}</td>
+                        <!-- <td id="dataEvent">routerLink="/HomeEventos/{{item.id}}"
+                            
+                            <a *ngIf="(item)?.palestrantes">{{(item.palestrantes)?.length}}</a>-->
+                        <!--<a *ngIf="(item)?.palestrantes">{{(item.palestrantes)?.length-1}}</a>-->
+
+                        <!-- <ul *ngFor="let item of item.palestrantes; let j = index">
+                                <li *ngIf="(item)?.nome">{{ (item)?.nome}}</li>
+                            </ul>
+
+                        </td>-->
+                        <!--  <td id="dataEvent" align="center">
+                            <select>
+                                <option *ngFor="let item of item.palestrantes; let j = index" ><a *ngIf="(item)?.nome">{{ (item)?.nome}}</a></option>
+                            </select>
+                            
+                        </td>-->
+
+                        <!--<input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">-->
+                        <!-- <td align="center">
+                        <i id='btn' class=" icon-info22" style=" color:#64add6;font-size: 16px; padding-right: 30px;padding: .75rem; " title="Especialidade Info!" (click)="infoEsp(item.id)"></i>
+
+                        <i class="   icon-bin2 delete" style=" font-size: 16px;color:red ; padding-left: 30px;padding: .75rem;" title="Eliminar Especialidade!" (click)="delEspec(item.id)"></i>
+
+                    </td>-->
+
+                    </tr>
+
+
+                </tbody>
+            </table>
+            <div class="text-center">
+                <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLongTitle">Crie o seu evento</h6>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" routerLink="/listarEventos">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <app-criar-evento></app-criar-evento>
+            </div>
+
+        </div>
+    </div>
+</div>
